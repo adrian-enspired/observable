@@ -64,7 +64,7 @@ _for **SplSubject**:_
             Event names are arbitrary, dot-delimited strings.  
             Event names may be grouped in hierarchies; 
             a trailing dot will match all sub-named events.  
-            The special event name "all" will match _all_ events.
+            The special event name "<code>all</code>" will match _all_ events.
     </li>
     <li>
         <p><b>detach</b><br>
