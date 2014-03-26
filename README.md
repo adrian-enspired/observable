@@ -80,5 +80,7 @@ _for **SplSubject**:_
             <code>void notify( [$event] )</code><br>
             In addition to the <a href=http://php.net/splsubject.notify>SPL documentation</a>, 
             allows sending notifications for specific events.
+        <p>param <b>$event</b><br>
+            See the description for <code>$event</code> (above).
     </li>
 </ul>
