@@ -15,7 +15,7 @@ Depending on which interfaces are declared, unneeded methods will do nothing.  F
 events and event groups
 -----------------------
 
-`observable` supports subscriptions/notifications on named events.  Event names are dot-delimited strings; a trailing dot will also match all sub-names.  The default event is "*" (meaning "every|any event" - the is the "normal" usage that the SPL interfaces intended).  Observe (no pun intended):
+`observable` supports subscriptions/notifications on named events.  Event names are dot-delimited strings; a trailing dot will also match all sub-names.  The default event is "`*`" (meaning "every|any event" - this is the "normal" usage that the SPL interfaces intended).  Observe (no pun intended):
 
     <?php
       # this code...                                 # subscribes observer to...
