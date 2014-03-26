@@ -41,7 +41,7 @@ _for **SplObserver**:_
     <li>
         <p><b>update()</b><br>
             <code>void update( \SplSubject $subject )</code><br>
-            see the [SPL documentation](http://php.net/splobserver.update).  
+            see the <a href=http://php.net/splobserver.update>SPL documentation</a>.  
         <p><code>configurable</code> uses <code>update</code> as an update dispatcher.  
             The implementing class should define a "handler" method for each event it needs to support, 
             and must also define a "catch-all" method for other event notifications.  
@@ -56,7 +56,7 @@ _for **SplSubject**:_
     <li>
         <p><b>attach()</b><br>
             <code>void attach( \SplObserver $observer [, $event] )</code><br>
-            In addition to the [SPL documentation](http://php.net/splsubject.attach),
+            In addition to the <a href=http://php.net/splsubject.attach>SPL documentation</a>,
             allows observers to subscribe to specific events or event groups.
         <p>param <b>$event</b><br>
             The event (group) to subscribe to.  
@@ -69,7 +69,7 @@ _for **SplSubject**:_
     <li>
         <p><b>detach</b><br>
             <code>void detach( \SplObserver $observer [, $event] )</code><br>
-            In addition to the [SPL documentation](http://php.net/splsubject.detach), 
+            In addition to the <a href=http://php.net/splsubject.detach>SPL documentation</a>, 
             allows un-subscribing from specific events or event groups.  
             If all of an observer's events are detached, the observer will be detached as well.
         <p>param <b>$event</b><br>
@@ -78,7 +78,7 @@ _for **SplSubject**:_
     <li>
         <p><b>notify</b><br>
             <code>void notify( [$event] )</code><br>
-            In addition to the [SPL documentation](http://php.net/splsubject.notify), 
+            In addition to the <a href=http://php.net/splsubject.notify>SPL documentation</a>, 
             allows sending notifications for specific events.
     </li>
 </ul>
