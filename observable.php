@@ -45,11 +45,11 @@ trait observable{
         $event = func_get_arg( 1 )?: "all";
         // existing observer
         if( $_observers->offsetExists( $observer ) ){
-            $_observers->offsetGet( $observer )->offsetSet( $event );
+            $_observers->offsetGet( $observer )->offsetSet( $event,$event );
         }
         // new observer
         else{
-            $_observers->offsetSet( $observer,Arrays::makeSet( $event ) );
+            $_observers->offsetSet( $observer,new \ArrayObject( $event,$event ) );
         }
     }
     
@@ -71,7 +71,7 @@ trait observable{
         if( $_observers->offsetExists( $observer ) ){
             $events = $_observers->offsetGet( $observer );
             // detach observer?
-            if( $event === "*" ){
+            if( $event === "all" ){
                 $_observers->offsetUnset( $observer );
             }
             // or specific events?
@@ -80,7 +80,7 @@ trait observable{
                 // remove specified event [and sub-named events]
                 foreach( $events as $k ){
                     if( $k === $event || ($wild && strpos( $k,$event ) === 0) ){
-                        $events->offsetUnset( $event );
+                        $events->offsetUnset( $k );
                     }
                 }
                 // remove observer if no events remain
