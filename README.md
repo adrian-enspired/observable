@@ -42,10 +42,10 @@ _for **SplObserver**:_
         <p><b>update()</b><br>
             <code>void update( \SplSubject $subject )</code><br>
             see the [SPL documentation](http://php.net/splobserver.update).  
-        <p>this implementation uses <code>update</code> as an update dispatcher.  
-            the implementing class should define a method for each event it needs to support, 
+        <p>`configurable` uses <code>update</code> as an update dispatcher.  
+            The implementing class should define a method for each event it needs to support, 
             and must also define a "catch-all" method for other event notifications.  
-            the naming convention/signature for these methods are as follows:<br>
+            The naming convention/signature for these methods are as follows:<br>
             <code>void \_update_{name of event}( \SplSubject $subject, $event )</code><br>
             <code>void \_update_all( \SplSubject $subject, $event )</code><br>
     </li>
@@ -56,28 +56,28 @@ _for **SplSubject**:_
     <li>
         <p><b>attach()</b><br>
             <code>void attach( \SplObserver $observer [, $event] )</code><br>
-            in addition to the [SPL documentation](http://php.net/splsubject.attach),
+            In addition to the [SPL documentation](http://php.net/splsubject.attach),
             allows observers to subscribe to specific events or event groups.
         <p>param <b>$event</b><br>
-            the event (group) to subscribe to.  
-            if omitted, the observer will recieve notifications on _all_ events.  
-            event names are arbitrary, dot-delimited strings.  
-            event names may be grouped in hierarchies.  
+            The event (group) to subscribe to.  
+            If omitted, the observer will recieve notifications on _all_ events.  
+            Event names are arbitrary, dot-delimited strings.  
+            Event names may be grouped in hierarchies; 
             a trailing dot will match all sub-named events.
     </li>
     <li>
         <p><b>detach</b><br>
             <code>void detach( \SplObserver $observer [, $event] )</code><br>
-            in addition to the [SPL documentation](http://php.net/splsubject.detach), 
+            In addition to the [SPL documentation](http://php.net/splsubject.detach), 
             allows un-subscribing from specific events or event groups.  
-            if all of an observer's events are detached, the observer will be detached as well.
+            If all of an observer's events are detached, the observer will be detached as well.
         <p>param <b>$event</b><br>
             See the description for <code>$event</code> (above).
     </li>
     <li>
         <p><b>notify</b><br>
             <code>void notify( [$event] )</code><br>
-            in addition to the [SPL documentation](http://php.net/splsubject.notify), 
+            In addition to the [SPL documentation](http://php.net/splsubject.notify), 
             allows sending notifications for specific events.
     </li>
 </ul>
