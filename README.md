@@ -6,7 +6,7 @@ implementation of SplObserver + SplSubject with support for named events.
 one, other, both
 ----------------
 
-Depending on declared interfaces, unneeded methods will do nothing.  For example:
+Depending on which interfaces are declared, unneeded methods will do nothing.  For example:
 
 * In a class which `implements SplObserver`, the `update` method will work normally, but `attach`, `detach`, and `notify` will do nothing at all.
 * In a class which `implements SplSubject`, `attach`, `detach`, and `notify` will work, but `update` will do nothing.
@@ -17,7 +17,7 @@ events and event groups
 
 `observable` supports subscriptions/notifications on named events.  Event names are dot-delimited strings; a trailing dot will also match all sub-names.  The default event is "*" (meaning "every|any event" - the is the "normal" usage that the SPL interfaces intended).  Observe (no pun intended):
 
-  <?php
+    <?php
       # this code...                                 # subscribes observer to...
       #----------------------------------------------#-------------------------------------------
       $subject->attach( $observer1,"hello.world" );  # "hello.world"
