@@ -42,12 +42,12 @@ _for **SplObserver**:_
         <p><b>update()</b><br>
             <code>void update( \SplSubject $subject )</code><br>
             see the [SPL documentation](http://php.net/splobserver.update).  
-        <p>`configurable` uses <code>update</code> as an update dispatcher.  
-            The implementing class should define a method for each event it needs to support, 
+        <p><code>configurable</code> uses <code>update</code> as an update dispatcher.  
+            The implementing class should define a "handler" method for each event it needs to support, 
             and must also define a "catch-all" method for other event notifications.  
-            The naming convention/signature for these methods are as follows:<br>
-            <code>void \_update_{name of event}( \SplSubject $subject, $event )</code><br>
-            <code>void \_update_all( \SplSubject $subject, $event )</code><br>
+            The naming convention/signature for handlers are as follows:<br>
+            <code>void _update_{name of event}( \SplSubject $subject, $event )</code><br>
+            <code>void _update_all( \SplSubject $subject, $event )</code><br>
     </li>
 </ul>
 
