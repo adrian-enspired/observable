@@ -16,13 +16,12 @@ trait observable{
      */
     public function update( \SplSubject $subject ){
         if( ! ($this instanceof \SplObserver) ){ return; }
-        $event = func_get_arg( 1 )?: "*";
+        $event = func_get_arg( 1 );
         try{
-            $updateMethod = $this->conf( "updates.$event" )?:
-                [$this,"_update_$event"];
-            if( is_callable( $updateMethod ) ){
-                $updateMethod( $subject,$event );
-            }
+            $updateMethod = method_exists( $this,"_update_$event" )?:
+                [$this,"_update_$event"]:
+                [$this,"_update_all"];
+            $updateMethod( $subject,$event );
         }
         catch( \Exception $e ){
             $o = get_called_class();
@@ -43,7 +42,7 @@ trait observable{
         static $_observers;
         if( ! ($this instanceof \SplSubject) ){ return; }
         if( ! $_observers ){ $_observers = $this->_observers(); }
-        $event = func_get_arg( 1 )?: "*";
+        $event = func_get_arg( 1 )?: "all";
         // existing observer
         if( $_observers->offsetExists( $observer ) ){
             $_observers->offsetGet( $observer )->offsetSet( $event );
@@ -63,7 +62,7 @@ trait observable{
         static $_observers;
         if( ! ($this instanceof \SplObserver) ){ return; }
         if( ! $_observers ){ $_observers = $this->_observers(); }
-        $event = func_get_arg( 1 )?: "*";
+        $event = func_get_arg( 1 )?: "all";
         $wild = substr( $event ) === ".";
         if( $wild ){
             $event = rtrim( $event,"." );
@@ -99,7 +98,7 @@ trait observable{
      */
     public function notify(){
         if( ! ($this instanceof \SplSubject) ){ return; }
-        $event = func_get_arg( 0 )?: "*";
+        $event = func_get_arg( 0 )?: "all";
         foreach( $this->_observable_filterObservers( $event,$exact ) as $observer ){
             $observer->update( $this,$event );
         }
@@ -119,9 +118,9 @@ trait observable{
             foreach( $_observers->offsetGet( $o ) as $k ){
                 $wild = substr( $k,-1 ) === ".";
                 if(
-                    $event === "*"
+                    $event === "all"
                     || $k === $event
-                    || $k === "*"
+                    || $k === "all"
                     || ($wild && strpos( $k,$event ) === 0)
                 ){
                     $list[] = $o; break;
