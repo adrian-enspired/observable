@@ -63,7 +63,8 @@ _for **SplSubject**:_
             If omitted, the observer will recieve notifications on _all_ events.  
             Event names are arbitrary, dot-delimited strings.  
             Event names may be grouped in hierarchies; 
-            a trailing dot will match all sub-named events.
+            a trailing dot will match all sub-named events.  
+            The special event name "all" will match _all_ events.
     </li>
     <li>
         <p><b>detach</b><br>
