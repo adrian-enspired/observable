@@ -16,7 +16,7 @@ trait observable{
      */
     public function update( \SplSubject $subject ){
         if( ! ($this instanceof \SplObserver) ){ return; }
-        $event = func_get_arg( 1 );
+        $event = str_replace( ".","_",func_get_arg( 1 ) );
         try{
             $updateMethod = method_exists( $this,"_update_$event" )?:
                 [$this,"_update_$event"]:
@@ -45,6 +45,10 @@ trait observable{
         if( ! ($this instanceof \SplSubject) ){ return; }
         if( ! $_observers ){ $_observers = $this->_observers(); }
         $event = func_get_arg( 1 )?: "all";
+        if( ! preg_match( '~^[a-z][\w]*$~i',$event ) ){
+            $m = "\$event name must be a valid PHP label; [$event] provided";
+            throw new \InvalidArgumentException( $m,E_USER_WARNING );
+        }
         // existing observer
         if( $_observers->offsetExists( $observer ) ){
             $_observers->offsetGet( $observer )->offsetSet( $event,$event );
