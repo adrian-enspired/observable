@@ -21,7 +21,9 @@ trait observable{
             $updateMethod = method_exists( $this,"_update_$event" )?:
                 [$this,"_update_$event"]:
                 [$this,"_update_all"];
-            $updateMethod( $subject,$event );
+            if( is_callable( $updateMethod ) ){
+                $updateMethod( $subject,$event );
+            }
         }
         catch( \Exception $e ){
             $o = get_called_class();
