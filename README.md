@@ -48,6 +48,7 @@ _for **SplObserver**:_
             The naming convention/signature for handlers are as follows:<br>
             <code>void _update_{name of event}( \SplSubject $subject, $event )</code><br>
             <code>void _update_all( \SplSubject $subject, $event )</code><br>
+            …where <code>{name of event}</code> is the full event name, with dot replaced with underscores.
     </li>
 </ul>
 
@@ -61,8 +62,8 @@ _for **SplSubject**:_
         <p>param <b>$event</b><br>
             The event (group) to subscribe to.  
             If omitted, the observer will recieve notifications on _all_ events.  
-            Event names are arbitrary, dot-delimited strings.  
-            Event names may be grouped in hierarchies; 
+            Event names are arbitrary, dot-delimited PHP labels (i.e., <code>/^[a-z][\w]*$/i</code>).  
+            Event names may be organized as hierarchichal groups; 
             a trailing dot will match all sub-named events.  
             The special event name "<code>all</code>" will match _all_ events.
     </li>
